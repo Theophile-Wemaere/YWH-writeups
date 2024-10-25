@@ -11,9 +11,9 @@ I use this repository to store my writeups from the monthly YesWeHack dojo :
 	- [YWH blog post](https://www.yeswehack.com/dojo/dojo-challenge-29-santalock)
 	- Weak credentials (CWE-798) and weak encryption used (CWE-326) leading to information disclosure
 	- Also winned this one
-- [Dojo #31]((dojo31/)) : **Coffee shop**
+- [Dojo #31](dojo31/) : **Coffee shop**
 	- [YWH blog post](https://www.yeswehack.com/dojo/dojo-ctf-challenge-winners-31)
 	- Server Side Template Injection (CWE-1336) leading to RCE
-- [Dojo #35]((dojo35/)) : **Chatroom**
+- [Dojo #35](dojo35/) : **Chatroom**
 	- [YWH blog post](https://www.yeswehack.com/dojo/dojo-ctf-challenge-winners-35)
 	- Remote Code Execution via file overwrite
