@@ -94,17 +94,17 @@ The backlist also look for the character `$`, which will be very annoying as the
 So it look like any attempt to inject a working payload will be flagged...
 
 However, the regex is incomplete ! In fact, there is another way of encoding string in python:
-![](img/ywh-1.png)
+![](dojo31/img/ywh-1.png)
 *From [docs.python.orgs](https://docs.python.org/3/howto/unicode.html#the-string-type)*
 
 So we can encode string with `\N`, which is not blacklist !
 
 So for example, encoding `$` would give `\N{DOLLAR SIGN}` :
-![](img/ywh-2.png)
+![](dojo31/img/ywh-2.png)
 
 We can try if this enough to bypass the blacklist with the previously mentioned payload :
 `${7*7}` -> `\N{DOLLAR SIGN}{7*7}` :
-![](img/ywh-3.png)
+![](dojo31/img/ywh-3.png)
 
 And it work ! We can see the review take the value `49`, which is the result of the operation `7 * 7`.
 
@@ -134,7 +134,7 @@ Which give us once encoded properly to escape filters :
 `\N{DOLLAR SIGN}{cycler.__init__.__globals__.os.popen('id').read()}`
 
 Let's see if it work !
-![](img/ywh-4.png)
+![](dojo31/img/ywh-4.png)
 And... it doesn't work
 
 The error from the server indicate that a `&` character is found, but we didn't injected it ! So where does it come from ?
@@ -168,12 +168,12 @@ To get the list of all classes, use the following payload :
 `${[].__class__.__base__.__subclasses__()}`
 Which give us once encoded properly to escape filters :
 `\N{DOLLAR SIGN}{[].__class__.__base__.__subclasses__()}` :
-![](img/ywh-5.png)
+![](dojo31/img/ywh-5.png)
 
 Once we have the list of classes, we can decode it using [cyberchief](https://cyberchef.org/#recipe=From_HTML_Entity()):
-![](img/ywh-6.png)
+![](dojo31/img/ywh-6.png)
 We can see find that the `Review` class is in the 2 index starting from the end. We can access it using the index `[-2]`. Once we have access to review class, we can access the reviews by calling the attribue `Review.reviews`. This will return the dict object created by the application, with our input inside :
-![](img/ywh-7.png)
+![](dojo31/img/ywh-7.png)
 But this is a dict object, so we need to transform it to a string. Fortunately, we can use the built-in method `__str__()`:
 `${[].__class__.__base__.__subclasses__()[-2].reviews.__str__()}`.
 And once we have a string object, we can extract any substring using python built-in slicing.

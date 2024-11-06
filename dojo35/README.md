@@ -7,7 +7,7 @@ The vulnerability of this Dojo can be found in the rendering process of the web 
 ## Description - Code Review
 
 In this application, we can input data and after it has been processed, it will be displayed in the web chat application :
-![](img/ywh-1.png)
+![](dojo35/img/ywh-1.png)
 
 Let's begin by reviewing the code source of the messaging system of the chatroom :
 ```js
@@ -130,7 +130,7 @@ So if we send the following data to the server :
 ```
 The code will write "`<h1>Hello World!</h1>`" inside `index.ejs`. 
 Let's test this theory :
-![](img/ywh-2.png)
+![](dojo35/img/ywh-2.png)
 
 #### 2°/ Find a payload to get RCE
 
@@ -149,7 +149,7 @@ So let's try that. The following JSON data should be enough :
 	"msg":"<% console.log(process.mainModule.require('child_process').execSync('id').toString()); %>"
 }
 ```
-![](img/ywh-3.png)
+![](dojo35/img/ywh-3.png)
 
 It worked, we successfully got RCE !
 ## PoC
@@ -164,7 +164,7 @@ The following JSON body will output the content of flag :
 ```
 
 Result :
-![](img/ywh-4.png)
+![](dojo35/img/ywh-4.png)
 
 FLAG : `FLAG{W1th_Cr34t1vity_C0m3s_RCE!!}`
 

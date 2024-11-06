@@ -93,7 +93,7 @@ vault.setKey("7f16e4fc3d6c9bd92de59e9369891dba") // <- the key is here
 ```
 
 It's very common to find this algorithm but it's also very weak, and should never be used for password hashing as it is now very fast to crack or to reverse using a [rainbow table](https://en.wikipedia.org/wiki/Rainbow_table). In fact, we can use the famous website [crackstation](https://crackstation.net/) to see if a password hash is present in one of thoses tables. It's always worth a try... And in this case, it was a good idea : the actual key value for the provided hash is found in crackstation database :
-![](img/ywh-1.png)
+![](dojo29/img/ywh-1.png)
 
 So the password would be : `missionfailed`... [not very secure](https://www.cisa.gov/secure-our-world/use-strong-passwords) :(
 
@@ -104,7 +104,7 @@ Anyway, if we input the password in the variable :
 const key = "missionfailed"
 ```
 and we run the script with it, we get the following output :
-![](img/ywh-2.png)
+![](dojo29/img/ywh-2.png)
 
 This is another javascript function, this time an encoding one : 
 ```js
@@ -182,7 +182,7 @@ for pin in range(0,10): # pin bruteforce
 </table>
 
 And the output is exactly the same :
-![](img/ywh-3.png)
+![](dojo29/img/ywh-3.png)
 
 ## PoC 
 
@@ -195,7 +195,7 @@ Decoded flag : FLAG{Th3_N3w_Crypt0_m4$t3r}
 ### Bonus 
 
 If you don't like coding or just to spare some times, it's also possible to find the cleartext value of the flag using the wonderful website https://cyberchef.org/ :
-![](img/ywh-4.png)
+![](dojo29/img/ywh-4.png)
 
 You can find the exact recipe [here](https://cyberchef.org/#recipe=Magic(3,true,false,'')&input=ZFg5eWRFaG5Xd0JzZlFCRWJIQkJTa05IQTJ4ZUJ4ZEhBRUZP)
 
