@@ -90,11 +90,11 @@ This code take for input your payload, convert it to octal code for each charact
 <img src='x' onerror='alert("XSS")'>
 ```
 
-![](dojo20/img/ywh-1.png)
+![](img/ywh-1.png)
 
 Now let's try try it on the website : 
 
-![](dojo20/img/ywh-2.png)
+![](img/ywh-2.png)
 
 The octal encoding method is working, we can successfully execute javascript code !
 
@@ -115,7 +115,7 @@ and in octal code :
 
 We can complete the challenge by login in as Cartman and modifying Butters connection status :
 
-![](dojo20/img/ywh-3.png)
+![](img/ywh-3.png)
 
 ## How to prevent :
 

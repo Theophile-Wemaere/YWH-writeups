@@ -136,11 +136,11 @@ This can be done in a `LIKE` query with the pattern `_%` :
 So let's try using `token=_%` and `cmd=;1234` :
 
 **First, with the test user :**
-![](dojo36/img/ywh-1.png)
+![](img/ywh-1.png)
 *We get a "bad address" error, which is expected as it's used with ping*
 
 **Now with the special token :**
-![](dojo36/img/ywh-2.png)
+![](img/ywh-2.png)
 *We get the "1234: not found", meaning we successfully access the "dev" user and the server tried to execute our command*
 
 So now that we have accessed the `"dev"` user, we need to find a way to execute shell commands without using letters...
@@ -154,7 +154,7 @@ However, `octal` encoding use the following pattern :
 
 So if we convert `whoami` to base 8 (octal), we get : `\167\150\157\141\155\151`
 And by using `$''` encapsulation, we should get the result of the `whoami` command :
-![](dojo36/img/ywh-3.png)
+![](img/ywh-3.png)
 
 We can automate the process of payload creation using a simple python script :
 ```python
@@ -163,13 +163,13 @@ encoded = [oct(ord(c)) for c in payload]
 epayload = "".join(encoded).replace('0o','\\').replace('\\40','\' $\'')
 print(f"$'{epayload}'")
 ```
-![](dojo36/img/ywh-4.png)
+![](img/ywh-4.png)
 *Spaces must be replaced by real spaces and not the octal representation of space*
 
 And this payload only use numbers, `$`,`'` and `\`, it doesn't match any of the characters of the regex function (`a-zA-Z_*^@%+=:,./-`).
 
 So let's try to get the result of the `id` command :
-![](dojo36/img/ywh-5.png)
+![](img/ywh-5.png)
 
 And it worked ! We successfully bypassed the filters and gained OS command injection on the server.
 ## POC
@@ -177,7 +177,7 @@ And it worked ! We successfully bypassed the filters and gained OS command injec
 By linking the SQL filters injection and the octal encoding to bypass the sanitization function, we are able to execute commands on the server and read the flag :
 
 **1. First, encode the command :**
-![](dojo36/img/ywh-6.png)
+![](img/ywh-6.png)
 ```sh
 $'\143\141\164' $'\57\164\155\160\57\146\154\141\147\56\164\170\164'
 ```
