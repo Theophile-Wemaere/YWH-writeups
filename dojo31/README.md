@@ -95,11 +95,13 @@ So it look like any attempt to inject a working payload will be flagged...
 
 However, the regex is incomplete ! In fact, there is another way of encoding string in python:
 ![](img/ywh-1.png)
+
 *From [docs.python.orgs](https://docs.python.org/3/howto/unicode.html#the-string-type)*
 
 So we can encode string with `\N`, which is not blacklist !
 
 So for example, encoding `$` would give `\N{DOLLAR SIGN}` :
+
 ![](img/ywh-2.png)
 
 We can try if this enough to bypass the blacklist with the previously mentioned payload :
