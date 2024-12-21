@@ -94,7 +94,7 @@ The backlist also look for the character `$`, which will be very annoying as the
 So it look like any attempt to inject a working payload will be flagged...
 
 However, the regex is incomplete ! In fact, there is another way of encoding string in python:
-![](img/ywh-1.png)
+![](dojo31/img/ywh-1.png)
 
 *From [docs.python.orgs](https://docs.python.org/3/howto/unicode.html#the-string-type)*
 
@@ -102,11 +102,11 @@ So we can encode string with `\N`, which is not blacklist !
 
 So for example, encoding `$` would give `\N{DOLLAR SIGN}` :
 
-![](img/ywh-2.png)
+![](dojo31/img/ywh-2.png)
 
 We can try if this enough to bypass the blacklist with the previously mentioned payload :
 `${7*7}` -> `\N{DOLLAR SIGN}{7*7}` :
-![](img/ywh-3.png)
+![](dojo31/img/ywh-3.png)
 
 And it work ! We can see the review take the value `49`, which is the result of the operation `7 * 7`.
 
@@ -136,7 +136,7 @@ Which give us once encoded properly to escape filters :
 `\N{DOLLAR SIGN}{cycler.__init__.__globals__.os.popen('id').read()}`
 
 Let's see if it work !
-![](img/ywh-4.png)
+![](dojo31/img/ywh-4.png)
 And... it doesn't work
 
 The error from the server indicate that a `&` character is found, but we didn't injected it ! So where does it come from ?

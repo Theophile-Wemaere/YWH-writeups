@@ -30,24 +30,24 @@ This mean we cannot use the scheme `file://` to load local files... or can we ?
 
 To find the vulnerability, we need to understand how `parse_url` work :
 
-![](img/ywh-1.png)
+![](dojo36_hallowen/img/ywh-1.png)
 
 The `scheme` part of the url is the protocol used (`http://`, `file://`,`git://`, ... ), and the function find it by cutting the url before `:`.
 
 Does that mean we can pass something like `http:google.com` (remark the missing `//`) ?
 Well... yes :
 
-![](img/ywh-2.png)
+![](dojo36_hallowen/img/ywh-2.png)
 
 This is where the vulnerability lies : the server check if we use the **scheme** `http`, but not if we use the **protocol** `http`. 
 
 And guess what, we can read file on a Linux server even with useless characters in the command (we just need to treat them like a folder):
 
-![](img/ywh-3.png)
+![](dojo36_hallowen/img/ywh-3.png)
 
 So, let's try that on the dojo (payload : `http:../../../etc/passwd`):
 
-![](img/ywh-4.png)
+![](dojo36_hallowen/img/ywh-4.png)
 And it work ! We successfully loaded (or included) a server file in the webpage.
 
 ## POC

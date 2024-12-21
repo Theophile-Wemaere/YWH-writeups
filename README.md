@@ -20,5 +20,8 @@ I use this repository to store my writeups from the monthly YesWeHack dojo :
  - [Dojo #36](dojo36/) : **Shell Escape**
 	- [YWH blog post](https://www.yeswehack.com/dojo/dojo-ctf-challenge-winners-36)
 	- SQL injection and Remote Code Execution using octal encoding
-- Dojo Hallowen : Spooky Party Invitation
+- [Dojo Hallowen](dojo36_hallowen/) : Spooky Party Invitation
     - Local File Inclusion via filter bypass
+- [Dojo #37](dojo37/) : Hacker Forum
+	- [YWH blog post](https://www.yeswehack.com/dojo/dojo-ctf-challenge-winners-37)
+    - SQL Injection leading to information disclosure and database modification.
