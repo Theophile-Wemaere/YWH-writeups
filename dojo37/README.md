@@ -9,7 +9,7 @@ SQL injection is a type of security vulnerability that occurs when an attacker i
 
 In this Dojo, we get access to a forum interface, where we can post a comment by inputing an author name and a message :
 
-![](img/ywh-1.png)
+![](dojo37/img/ywh-1.png)
 
 Let's take a look at the source code !
 
@@ -106,7 +106,7 @@ We can include SQL code inside our username to trigger a SQL injection. To do so
 
 Before injecting anything, let's test the censoring feature. To do so, we'll create a comment with one of the blacklisted words like `terrible`:
 
-![](img/ywh-2.png)
+![](dojo37/img/ywh-2.png)
 
 Now, let's try to inject SQL code to create a new comment :
 
@@ -126,7 +126,7 @@ UPDATE users SET banned = 1 WHERE username = 'Tihmz';INSERT INTO comments (post_
 
 Lets' try it :
 
-![](img/ywh-3.png)
+![](dojo37/img/ywh-3.png)
 
 And it worked, we were able to create a new comment by appending SQL code to the username.
 
@@ -148,7 +148,7 @@ Tihmz';INSERT INTO comments (post_id, author, comment, image) VALUES (1, 'Passwo
 terrible
 ```
 
-![](img/ywh-4.png)
+![](dojo37/img/ywh-4.png)
 
 > Flag : `FLAG{Vuln3r4b1li7y_Exp0s3d!!}`
 

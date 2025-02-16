@@ -39,7 +39,7 @@ select/**/*/**/from/**/users
 ```
 Let's try it :
 
-![](img/ywh-5.png)
+![](dojo19/img/ywh-5.png)
 
 It worked ! The error happen only because we try to make a 2nd statement on the same line.One way to bypass this is by using the `UNION` keyword. It's used to combine the result of two or more SELECT statements. But the two SELECT statements need to output the same numbers of columns, and as the first statement return 1 column (username), we need to specify which column we are interested in. In our case, we can try the 'password' column. The payload will look like :
 ```sql
@@ -51,7 +51,7 @@ and after transformation to bypass sanitization :
 ``` 
 Let's try it:
 
-![](img/ywh-6.png)
+![](dojo19/img/ywh-6.png)
 
 It worked, we get all the passwords of the column 'password'! Now we only need to precise that we want the password for the user `admin`, and also grab his email, and the challenge will be completed. 
 ## PoC
@@ -62,7 +62,7 @@ By using the following payload :
 ```
 I'm able to extract the password and the email address of the user `admin` :
 
-![](img/ywh-7.png)
+![](dojo19/img/ywh-7.png)
 
 ## Risk
 With this vulnerability, we can extract the credentials of any user, including the admin, which could be used to access privates resources or even a control panel in the case of the admin. 

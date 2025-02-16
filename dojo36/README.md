@@ -171,7 +171,7 @@ print(f"$'{epayload}'")
 And this payload only use numbers, `$`,`'` and `\`, it doesn't match any of the characters of the regex function (`a-zA-Z_*^@%+=:,./-`).
 
 So let's try to get the result of the `id` command :
-![](img/ywh-5.png)
+![](dojo36/img/ywh-5.png)
 
 And it worked ! We successfully bypassed the filters and gained OS command injection on the server.
 ## POC
@@ -180,12 +180,12 @@ By linking the SQL filters injection and the octal encoding to bypass the saniti
 
 **1. First, encode the command :**
 
-![](img/ywh-6.png)
+![](dojo36/img/ywh-6.png)
 ```sh
 $'\143\141\164' $'\57\164\155\160\57\146\154\141\147\56\164\170\164'
 ```
 **2. Then, using the right token filters (`_%`) and the payload, read the content of the flag :**
-![](img/ywh-7.png)
+![](dojo36/img/ywh-7.png)
 
 > Flag : `FLAG{W3lc0me_T0_Th3_Oth3r_S1de!}`
 

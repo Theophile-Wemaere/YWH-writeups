@@ -54,7 +54,7 @@ And it work ! We successfully loaded (or included) a server file in the webpage.
 
 Using the following payload : `http:../../../tmp/flag.txt`, we can read the flag content :
 
-![](img/ywh-5.png)
+![](dojo36_hallowen/img/ywh-5.png)
 
 > Flag : `FLAG{Sp0oKy_Sc4ry_Y3sW3H4ck!}`
 ## RISKS
@@ -77,7 +77,7 @@ if (preg_match('/^https?:\/\//', $url)) {
 
 This regular expression checks if the URL starts with either `http://` or `https://`. That way we cannot load file from the filesystem (if it doesn't start with `http://` or `https://`):
 
-![](img/ywh-6.png)
+![](dojo36_hallowen/img/ywh-6.png)
 
 As always, thanks to Pwnii for the fun challenge, and see you in the next one.
 
